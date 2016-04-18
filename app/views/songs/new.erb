@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
@@ -27,38 +28,50 @@
 <% end %>
 
 <div class="row, jumbotron" style="padding: 10px 0 40px 0">
-  <div class="col-md-3"></div>
-  <div class="col-md-3"><a href="/"><center>Home</center></a></div>
-  <div class="col-md-3"><a href="/songs"><center>Songs</center></a></div>
-  <div class="col-md-3"></div>
+  <div class="col-md-4"><a href="/"><center>home</center></a></div>
+  <div class="col-md-4"><a href="/songs"><center>songs</center></a></div>
+  <div class="col-md-4"><a href="/songs/new"><center>add</center></a></div>
 </div>
 
-<div>
-<h1>Post a song</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">    
+      <center>
+      <h1>Post a song</h1>
+      <form method="post" action="/songs">
+        <div style="padding: 10px 0 10px 0">
+            <input type="text" name="song_title" placeholder="song(required)" class="text-center" value="<%= @song.song_title %>">
+        </div>
+        <div style="padding: 10px 0 10px 0">
+          <input type="text" name="author" placeholder="author(required)" class="text-center" value="<%= @song.author %>">
+        </div>
+        <div style="padding: 10px 0 10px 0">
+          <input type="text" name="url" placeholder="url" class="text-center" value="<%= @song.url %>">
+        </div>
+        <br/>
+        <div>
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+      </form>
+      </center>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+  </div>
+</div>  
+
+<div class="container" style="padding: 20px 0 20px 0" >
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-xs-12 col-md-4" style="padding: 20px 0 20px 0; background-color: #eee">
+      <h3 class="text-center">Not a user yet?</h3>
+      <center><button class="btn">Sign up</button></center>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
 </div>
 
-<form method="post" action="/songs">
-  <div class="form-group">
-      <label>Song Title:</label>
-      <input type="text" name="song_title" value="<%= @song.song_title %>">
-  </div>
-  <div>
-    <label>Author:</label>
-    <input type="text" name="author" value="<%= @song.author %>">
-  </div>
-  <div>
-    <label>url:</label>
-    <input type="text" name="url" value="<%= @song.url %>">
-  </div>
-  <div>
-    <input type="submit" value="Submit" class="btn btn-primary">
-  </div>
-</form>
-
-<div class="col-xs-6 col-md-4" style="padding-top: 50px">
-<p>Decided you really don't want to post a song. Here's your chance to go back and browse all of the songs instead.</p>
-<button class="btn">Go back</button>
-</div>
 
 </body>
 </html>

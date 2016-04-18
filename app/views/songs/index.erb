@@ -11,18 +11,30 @@
 
 <body>
 
+<div class="row, jumbotron" style="padding: 10px 0 40px 0">
+  <div class="col-md-4"><a href="/"><center>home</center></a></div>
+  <div class="col-md-4"><a href="/songs"><center>songs</center></a></div>
+  <div class="col-md-4"><a href="/songs/new"><center>add</center></a></div>
+</div>
+
 <div class="text-center">
 <h1>This is a list of songs</h1>
 </div>
 
-<% @songs.each do |song| %>
-  <div class="song">
-    <h3><a href="/songs/<%= song.id %>"><%= song.song_title %></a> <small>(by: <%= song.author %>)</small> <a href="<%= song.url %>"><small>(url: <%= song.url %>)</small></a></h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"> 
+      <% @songs.each do |song| %>
+        <div class="song">
+          <h3><a href="/songs/<%= song.id %>"><%= song.song_title %></a></h3>author: <%= song.author %><p><a href="<%= song.url %>"><%= song.url %></small></a></p>
+        </div>
+      <% end %>
+        <div>
+          <a href="/songs/new"><button class="bth btn-primary">Post a song title just because you can</button></a>
+        </div>
+    </div>
   </div>
-<% end %>
-  <div>
-  <a href="/songs/new">Post a song title just because you can</a>
-  </div>
-
+</div>
   </body>
   </html> 
