@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/custom.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-
-
-
-
-
 <% if @song.errors.any? %>
   <div>
     <strong>Some issues with your input, please fix them:</strong>
@@ -28,9 +10,11 @@
 <% end %>
 
 <div class="row, jumbotron" style="padding: 10px 0 40px 0">
-  <div class="col-md-4"><a href="/"><center>home</center></a></div>
-  <div class="col-md-4"><a href="/songs"><center>songs</center></a></div>
-  <div class="col-md-4"><a href="/songs/new"><center>add</center></a></div>
+  <div class="col-md-2"><a href="/"><center>home</center></a></div>
+  <div class="col-md-2"><a href="/songs"><center>songs</center></a></div>
+  <div class="col-md-2"><a href="/songs/new"><center>add</center></a></div>
+  <div class="col-md-2"><a href="/users/register"><center>register</center></a></div>
+  <div class="col-md-2"><a href="/users/login"><center>login</center></a></div>
 </div>
 
 <div class="container">
@@ -73,6 +57,3 @@
   </div>
 </div>
 
-
-</body>
-</html>
