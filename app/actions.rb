@@ -6,6 +6,14 @@ enable :sessions
 # end
 
 # Homepage (Root path)
+
+before do 
+  @user = nil
+  if session[:user_id]
+    @user = User.find(session[:user_id])
+  end
+end
+
 get '/' do
   erb :index
 end
@@ -67,14 +75,18 @@ end
 post '/users/login' do 
   # TODO
   @user = User.new
-  if User.find_by username: params[:username]
-    user = User.find_by username: params[:username]
-    if user.password == params[:password]   
-      session[:user_id] = user.id
-      redirect :'/songs/new'
-    else
-      redirect :'/users/login'
-    end
+  # if User.find_by username: params[:username]
+  #   user = User.find_by username: params[:username]
+  user = User.where({username: params[:username], password: params[:password]}).first
+  if user
+    session[:user_id] = user.id
+    redirect :'/songs/new'
+    # if user.password == params[:password]   
+    #   session[:user_id] = user.id
+    #   redirect :'/songs/new'
+    # else
+    #   redirect :'/users/login'
+    # end
   else 
     redirect :'/users/login'
   end
@@ -85,5 +97,8 @@ get '/logout' do
   redirect :'/'
 end
 
+get '/upvote' do
+  @song.upvotes += 1
+end
 
 

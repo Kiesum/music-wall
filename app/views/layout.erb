@@ -24,6 +24,13 @@
   <title></title>
 </head>
 <body>
+<div class="row, jumbotron" style="padding: 10px 0 40px 0">
+  <div class="col-md-3"><a href="/"><center>home</center></a></div>
+  <div class="col-md-3"><a href="/songs"><center>songs</center></a></div>
+  <div class="col-md-3"><a href="/songs/new"><center>add</center></a></div>
+  <div class="col-md-3"><!-- <a href="/users/register"><center>register</center></a> --></div>
+  <div class="col-md-3"><center><% if @user %>Welcome <%= @user.username %><form action="/logout" method="get"><input type="submit" value="logout"></form></center><% else %><a href="/users/login"><center>login</center></a>or<a href="/users/register"><center>register</center></a><% end %></div>
+</div>
   <%= yield %>
 </body>
 </html>
