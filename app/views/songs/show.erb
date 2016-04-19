@@ -28,5 +28,17 @@ You have already voted
 </form>
 <% end %>
 </p>
+  <form action="/review" method="post">
+    <div style="padding: 10px 0 10px 0">
+      <input type="text" name="review" placeholder="write a review" class="text-center">
+    </div>
+    <div style="padding: 10px 0 10px 0">
+      <input type="integer" name="rating" placeholder="rating" class="text-center">
+    </div>
+    <div>
+      <input type="hidden" name="id" value="<%= @song.id %>">
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </div>
+  </form>
 <hr/>
 <a href="/songs">Back to the song list.</a>

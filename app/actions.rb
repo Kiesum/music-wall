@@ -95,6 +95,17 @@ post '/upvote' do
   redirect :'/songs'
 end
 
+post '/review' do 
+  @review = Review.new(
+    song_id: params[:id],
+    user_id: session[:user_id],
+    review: params[:review],
+    rating: params[:rating]
+    )
+  @review.save
+  redirect :'/songs'
+end
+
 
 
 
