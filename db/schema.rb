@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20160419180336) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "upvotes"
+    t.integer  "upvote_counter"
   end
 
   create_table "upvotes", force: :cascade do |t|

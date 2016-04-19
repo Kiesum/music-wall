@@ -12,9 +12,11 @@
   <%= @song.created_at %>
 </p>
 <p>
-  upvotes: <%= Upvote.where(song_id: @song.id).count %>
-</p>
+  uploaded by: <%= @user.username %>
 <p>
+<p>
+  upvotes: <%= @upvotes = Upvote.where(song_id: @song.id).count %>
+</p>
 <% if @user == nil %>
 <p>You can only vote if you are logged in.</p>
 <% elsif Upvote.where(song_id: @song.id, user_id: @user.id).first %>

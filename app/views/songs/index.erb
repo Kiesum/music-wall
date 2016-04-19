@@ -5,10 +5,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-4"> 
+    <div class="col-md-4">
       <% @songs.each do |song| %>
         <div class="song">
-          <h3><a href="/songs/<%= song.id %>"><%= song.song_title %></a></h3>author: <%= song.author %><p><a href="<%= song.url %>"><%= song.url %></small></a></p>upvotes: <%= Upvote.where(song_id: song.id).count %>
+          <h3><a href="/songs/<%= song.id %>"><%= song.song_title %></a></h3>artist: <%= song.author %><p><a href="<%= song.url %>"><%= song.url %></small></a></p>upvotes: <%= song.upvotes.count %></p>
         </div>
       <% end %>
         <div>
@@ -17,4 +17,7 @@
     </div>
   </div>
 </div>
+
+<div>
+
 

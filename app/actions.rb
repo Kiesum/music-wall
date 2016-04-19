@@ -19,7 +19,7 @@ get '/' do
 end
 
 get '/songs' do
-  @songs = Song.all
+  @songs = Song.joins("left outer join upvotes on songs.id = upvotes.song_id").group('songs.id').order('COUNT(upvotes.id) DESC')
   erb :'songs/index'
 end
 
@@ -94,5 +94,7 @@ post '/upvote' do
   @upvote.save
   redirect :'/songs'
 end
+
+
 
 
