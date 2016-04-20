@@ -106,6 +106,11 @@ post '/review' do
   redirect :'/songs'
 end
 
+post '/delete' do 
+  review = Review.where(id: params[:review_id]).first
+  review.delete
+  redirect :'/songs'
+end
 
 
 

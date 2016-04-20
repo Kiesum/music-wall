@@ -1,13 +1,19 @@
-<p>
-  Song: <%= @song.song_title %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"> 
+
 
 <p>
-  <%= @song.author %>
+  <h3><%= @song.song_title %></h3>
+</p>
+<p>
+  <h3><%= @song.author %></h3>
 </p>
 <p>
   <a href="http://<%= @song.url %>"><%= @song.url %></a>
 </p>
+<br/>
 <p>
   <%= @song.created_at %>
 </p>
@@ -30,6 +36,16 @@ You have already voted
 <h3>Reviews</h3>
   <% @reviews.each do |review| %>
     <%= review.review %>
+    <br/>
+    <% if @user.nil? %>
+      nil
+    <% elsif review.user_id == @user.id %>
+      <form action="/delete" method="post">
+        <input type="hidden" name="review_id" value="<%= review.id %>">
+        <input type="submit" value="Delete review" class="btn btn-primary">
+      </form>
+    <% end %>
+    <br/>
   <% end %>
 
 <% if @user.nil? %>
@@ -40,7 +56,7 @@ You have already voted
 </p>
   <form action="/review" method="post">
     <div style="padding: 10px 0 10px 0">
-      <input type="text" name="review" placeholder="write a review" class="text-center">
+      <textarea name="review" placeholder="write a review" class="text-center"></textarea>
     </div>
     <div style="padding: 10px 0 10px 0">
       <input type="integer" name="rating" placeholder="rating" class="text-center">
@@ -52,4 +68,8 @@ You have already voted
   </form>
 <% end %>
 <hr/>
-<a href="/songs">Back to the song list.</a>
+<a href="/songs">Back to the song list</a>
+
+    </div>
+  </div>
+</div>
