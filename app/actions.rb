@@ -30,6 +30,7 @@ end
 
 get '/songs/:id' do 
   @song = Song.find params[:id]
+  @reviews = Review.where(song_id: params[:id])
   erb :'songs/show'
 end
 
@@ -51,7 +52,6 @@ if session.key?(:user_id)
 end
 
 get '/users/register' do 
-  @user = User.new
   erb :'users/register'
 end
 

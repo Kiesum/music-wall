@@ -12,12 +12,12 @@
   <%= @song.created_at %>
 </p>
 <p>
-  uploaded by: <%= @user.username %>
+  uploaded by:
 <p>
 <p>
   upvotes: <%= @upvotes = Upvote.where(song_id: @song.id).count %>
 </p>
-<% if @user == nil %>
+<% if @user.nil? %>
 <p>You can only vote if you are logged in.</p>
 <% elsif Upvote.where(song_id: @song.id, user_id: @user.id).first %>
 You have already voted
@@ -27,6 +27,16 @@ You have already voted
   <input type="submit" value="upvote">
 </form>
 <% end %>
+<h3>Reviews</h3>
+  <% @reviews.each do |review| %>
+    <%= review.review %>
+  <% end %>
+
+<% if @user.nil? %>
+  You need to be logged in
+<% elsif Review.where(song_id: @song.id, user_id: @user.id).first %>
+  You've already reveiwed this song
+<% else %>
 </p>
   <form action="/review" method="post">
     <div style="padding: 10px 0 10px 0">
@@ -40,5 +50,6 @@ You have already voted
       <input type="submit" value="Submit" class="btn btn-primary">
     </div>
   </form>
+<% end %>
 <hr/>
 <a href="/songs">Back to the song list.</a>
